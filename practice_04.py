@@ -68,3 +68,72 @@ with open('new_file.txt', 'a') as file:
     file.write(append_text)
 
 
+#Copy a file
+import shutil
+
+shutil.copyfile("test.txt", "copy/copy.txt")
+
+
+#Move a file
+import os
+
+source = "test.txt"
+destination = "copy/copy.txt"
+
+try:
+    if os.path.exists(destination):
+        print(source + " is already there.")
+    else:
+        os.replace(source, destination)
+        print(source + " was moved successfully.")
+except FileNotFoundError:
+    print(source + " was not found.")
+
+
+#Delete a file
+import os
+
+path = "test.txt"
+
+try:
+    os.remove(path)
+except FileNotFoundError:
+    print(path + " was not found.")
+except PermissionError:
+    print("You don't have permission.")
+else:
+    print(path + " was successfully deleted.")
+
+
+#Delete an empty folder
+import os
+
+empty_folder = "empty_folder"
+
+try:
+    os.rmdir(empty_folder)
+except FileNotFoundError:
+    print(empty_folder + " was not found.")
+except PermissionError:
+    print("You don't have permission.")
+except OSError:
+    print("The folder is not empty, you can't use this function.")
+else:
+    print(empty_folder + " was successfully deleted.")
+
+
+#Delete a folder with data
+import shutil
+
+folder_with_data = "folder_with_data"
+
+try:
+    shutil.rmtree(folder_with_data)
+except FileNotFoundError:
+    print(folder_with_data + " was not found.")
+except PermissionError:
+    print("You don't have permission.")
+except OSError:
+    print("The folder is not empty, you can't use this function.")
+else:
+    print(folder_with_data + " was successfully deleted.")
